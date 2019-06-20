@@ -1,0 +1,36 @@
+{
+  "manifest_version": 2,
+  "name": "Track Activity Extension",
+  "version": "1.0",
+  "description": "Track Activity",
+  "permissions": [
+    "cookies",
+    "<all_urls>",
+    "https://stackoverflow.com/*",
+    "https://stackoverflow.com/*",
+    "http://127.0.0.1:4200/*",
+    "http://localhost:4200/*"
+  ],
+  "icons": {
+    "128": "icon128.png",
+    "48": "icon48.png",
+    "16": "icon16.png"
+  },
+  "browser_action": {
+    "default_icon": "icon16.png",
+    "default_popup": "popup.html"
+  },
+  "content_scripts": [
+    {
+      "js": ["jquery-3.3.1.min.js", "content.js"],
+      "matches": ["https://stackoverflow.com/*"]
+    }
+  ],
+  "background": {
+    "scripts": ["jquery-3.3.1.min.js", "background.js"]
+  },
+  "externally_connectable": {
+    "matches": ["http://localhost:3000/*", "http://localhost:4200/*"],
+    "accept_tls_channel_id": true
+  }
+}
